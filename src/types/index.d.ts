@@ -11,7 +11,11 @@ declare type CustomElementEventListenerParameter<T extends CustomElementKeys> =
 
 declare type CustomEvents<T extends CustomElementKeys> = {
     [key in CustomElementEventListenerParameter<T>[0]]:
-        | CustomElementEventListenerParameter<T>[1];
+        | CustomElementEventListenerParameter<T>[1]
+        | [
+              CustomElementEventListenerParameter<T>[1],
+              CustomElementEventListenerParameter<T>[2]
+          ];
 };
 
 interface CustomAttributes<T extends CustomElementKeys> {

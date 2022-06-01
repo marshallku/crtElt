@@ -14,12 +14,25 @@ export default function crtElt<
     if (!(node instanceof DocumentFragment)) {
         Object.entries(attributes).forEach(([key, value]) => {
             if (key === "events") {
-                Object.entries(value).forEach(([type, listener]) => {
-                    node.addEventListener(
-                        type,
-                        listener as EventListenerOrEventListenerObject
-                    );
-                });
+                Object.entries(value as Partial<CustomEvents<T>>).forEach(
+                    ([type, args]) => {
+                        if (Array.isArray(args)) {
+                            const curArgs = args as [
+                                EventListenerOrEventListenerObject,
+                                boolean | AddEventListenerOptions | undefined
+                            ];
+
+                            node.addEventListener(type, ...curArgs);
+
+                            return;
+                        }
+
+                        const curArgs =
+                            args as EventListenerOrEventListenerObject;
+
+                        node.addEventListener(type, curArgs);
+                    }
+                );
 
                 return;
             }

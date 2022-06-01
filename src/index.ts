@@ -34,14 +34,6 @@ export default function crtElt<
             return;
         }
 
-        if (key === "dataset") {
-            Object.entries(value).forEach(([dataAttribute, dataValue]) => {
-                node.dataset[dataAttribute] = dataValue as string;
-            });
-
-            return;
-        }
-
         if (key === "events") {
             Object.entries(value as Partial<CustomEvents<T>>).forEach(
                 ([type, args]) => {
@@ -61,6 +53,14 @@ export default function crtElt<
                     node.addEventListener(type, curArgs);
                 }
             );
+
+            return;
+        }
+
+        if (key === "dataset") {
+            Object.entries(value).forEach(([dataAttribute, dataValue]) => {
+                node.dataset[dataAttribute] = dataValue as string;
+            });
 
             return;
         }

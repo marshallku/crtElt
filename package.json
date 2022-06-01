@@ -2,9 +2,13 @@
     "name": "crtelt",
     "version": "0.0.0",
     "description": "Utility to create DOM Element",
-    "main": "index.js",
+    "main": "dist/index.min.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "rollup --config",
+        "postbuild": "cp ./src/index.d.ts ./dist",
+        "prepublish": "npm run build"
     },
     "repository": {
         "type": "git",
@@ -18,6 +22,11 @@
     },
     "homepage": "https://github.com/marshallku/crtElt#readme",
     "devDependencies": {
+        "@rollup/plugin-babel": "^5.3.1",
+        "@rollup/plugin-typescript": "^8.3.2",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "rollup": "^2.75.4",
+        "rollup-plugin-terser": "^7.0.2",
         "typescript": "^4.7.2"
     }
 }

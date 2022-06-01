@@ -5,6 +5,14 @@ export default function crtElt(nodeName, attributes, ...children) {
             : document.createElement(nodeName);
 
     Object.entries(attributes).forEach(([key, value]) => {
+        if (key === "events") {
+            Object.entries(value).forEach(([type, listener]) => {
+                node.addEventListener(type, listener);
+            });
+
+            return;
+        }
+
         if (key in node) {
             try {
                 node[key] = value;

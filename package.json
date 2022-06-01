@@ -16,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/marshallku/crtElt/issues"
     },
-    "homepage": "https://github.com/marshallku/crtElt#readme"
+    "homepage": "https://github.com/marshallku/crtElt#readme",
+    "devDependencies": {
+        "typescript": "^4.7.2"
+    }
 }

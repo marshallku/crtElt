@@ -30,6 +30,10 @@ export default function crtElt<
     }
 
     Object.entries(attributes).forEach(([key, value]) => {
+        if (typeof value === "undefined" || value === null) {
+            return;
+        }
+
         if (key === "events") {
             Object.entries(value as Partial<CustomEvents<T>>).forEach(
                 ([type, args]) => {

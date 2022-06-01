@@ -1,0 +1,20 @@
+{
+    "name": "crtelt",
+    "version": "0.0.0",
+    "description": "Utility to create DOM Element",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marshallku/crtElt.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/marshallku/crtElt/issues"
+    },
+    "homepage": "https://github.com/marshallku/crtElt#readme"
+}

@@ -1,6 +1,6 @@
 {
     "name": "crtelt",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Utility to create DOM Element",
     "main": "dist/index.min.js",
     "module": "dist/index.esm.js",
@@ -15,8 +15,12 @@
         "url": "git+https://github.com/marshallku/crtElt.git"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": {
+        "name": "Marshall K",
+        "email": "marshall@kakao.com",
+        "url": "https://marshallku.com"
+    },
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/marshallku/crtElt/issues"
     },

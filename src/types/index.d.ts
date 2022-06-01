@@ -21,7 +21,7 @@ declare type CustomEvents<T extends CustomElementKeys> = {
 interface CustomAttributes<T extends CustomElementKeys> {
     events: Partial<CustomEvents<T>>;
     dataset: { [key: string]: string };
-    style: Partial<CSSStyleDeclaration>;
+    style: Partial<CSSStyleDeclaration> | { [key: string]: string };
 }
 
 declare type CustomElementAttributes<T extends CustomElementKeys> =

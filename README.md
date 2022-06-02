@@ -61,42 +61,58 @@ It'll be appended if it's truthy.
 
 ## Examples
 
+### Creating an element
+
+```ts
+const Element = crtElt(
+    "div",
+    { className: "element" },
+    crtElt("span", { className: "element__child" }, "foo"),
+    crtElt("span", { className: "element__child" }, "bar")
+);
+```
+
+### Adding event listeners
+
 ```ts
 function Textarea() {
-    const handleChange = ({ target }: Event) => {
-        if (!(target instanceof HTMLTextAreaElement)) {
-            return;
-        }
+    return crtElt("textarea", {
+        className: "textarea",
+        placeholder: "Type some text",
+        ariaLabel: "Type some text",
+        rows: 2,
+        events: {
+            change({ target }) {
+                if (!(target instanceof HTMLTextAreaElement)) {
+                    return;
+                }
 
-        console.log(target.value);
-    };
-
-    return crtElt(
-        "div",
-        { className: "text" },
-        crtElt("textarea", {
-            className: "text__input",
-            placeholder: "Type Here!",
-            ariaLabel: "Type Here!",
-            rows: 2,
-            events: {
-                change: handleChange,
-                keydown: handleChange,
-                keyup: handleChange,
-                click: [
-                    () => {
-                        console.log("You clicked it");
-                    },
-                    { once: true },
-                ],
+                console.log(target.value);
             },
-            style: {
-                width: "100px",
-                fontSize: "2rem",
-            },
-        }),
-        crtElt("div", { className: "text__line text__line--top" }),
-        crtElt("div", { className: "text__line" })
-    );
+            click: [
+                () => {
+                    console.log("You clicked it");
+                },
+                { once: true },
+            ],
+        },
+    });
 }
+```
+
+### Adding styles
+
+```ts
+const Element = crtElt(
+    "div",
+    {
+        className: "element",
+        style: {
+            width: `${Math.log(window.innerWidth)}px`,
+            "--color": `${getRandomHexColor()}`,
+        },
+    },
+    crtElt("span", { className: "element__child" }, "foo"),
+    crtElt("span", { className: "element__child" }, "bar")
+);
 ```

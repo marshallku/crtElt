@@ -15,7 +15,7 @@ Import with script tag
 ```html
 <script src="node_modules/crtelt/dist/index.min.js"></script>
 <!-- or -->
-<script src="https://cdn.jsdelivr.net/npm/crteltm@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crtelt@latest/dist/index.min.js"></script>
 ```
 
 Import as module

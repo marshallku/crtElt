@@ -23,7 +23,7 @@ export default [
     {
         input: "src/index.ts",
         output: {
-            name: "Zoom",
+            name: "crtElt",
             file: pkg.main.replace(".min", ""),
             format: "umd",
         },
@@ -32,7 +32,7 @@ export default [
     {
         input: "src/index.ts",
         output: {
-            name: "Zoom",
+            name: "crtElt",
             file: pkg.main,
             format: "umd",
         },

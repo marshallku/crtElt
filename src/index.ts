@@ -79,6 +79,12 @@ export default function crtElt<
             return;
         }
 
+        if (node instanceof SVGElement) {
+            node.setAttribute(key, value);
+
+            return;
+        }
+
         if (key in node) {
             try {
                 node[key as "innerText"] = value as string;

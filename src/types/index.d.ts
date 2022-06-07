@@ -1,4 +1,4 @@
-interface CustomElements extends HTMLElementTagNameMap {
+interface CustomElements extends HTMLElementTagNameMap, SVGElementTagNameMap {
     fragment: DocumentFragment;
 }
 
@@ -26,7 +26,8 @@ interface CustomAttributes<T extends CustomElementKeys> {
 
 declare type CustomElementAttributes<T extends CustomElementKeys> =
     | Partial<CreatedElement<T>>
-    | Partial<CustomAttributes<T>>;
+    | Partial<CustomAttributes<T>>
+    | { [key: string]: string };
 
 declare function crtElt<
     T extends CustomElementKeys,

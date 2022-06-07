@@ -1,6 +1,6 @@
 {
     "name": "crtelt",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "Utility to create DOM Element",
     "main": "dist/index.min.js",
     "module": "dist/index.esm.js",

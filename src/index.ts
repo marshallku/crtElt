@@ -1,3 +1,5 @@
+import createElement from "./createElement";
+
 export default function crtElt<
     T extends CustomElementKeys,
     U extends CreatedElement<T>
@@ -6,10 +8,7 @@ export default function crtElt<
     attributes: CustomElementAttributes<T> = {},
     ...children: Array<string | DocumentFragment | Element | undefined | null>
 ): U {
-    const node =
-        nodeName === "fragment"
-            ? document.createDocumentFragment()
-            : document.createElement(nodeName);
+    const node = createElement(nodeName);
 
     children.forEach((childNode) => {
         if (!childNode) {

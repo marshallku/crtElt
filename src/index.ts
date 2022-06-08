@@ -1,3 +1,9 @@
+import {
+    CreatedElement,
+    CustomElementAttributes,
+    CustomElementKeys,
+    CustomEvents,
+} from "./types";
 import createElement from "./createElement";
 
 export default function crtElt<

@@ -2,6 +2,7 @@ import { babel } from "@rollup/plugin-babel";
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";
+import dts from "rollup-plugin-dts";
 
 const basePlugins = [
     babel({
@@ -19,6 +20,15 @@ export default [
             format: "es",
         },
         plugins: [...basePlugins],
+    },
+    {
+        input: "src/index.ts",
+        output: {
+            name: "crtElt",
+            file: pkg.types,
+            format: "es",
+        },
+        plugins: [dts()],
     },
     {
         input: "src/index.ts",

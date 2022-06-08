@@ -1,13 +1,12 @@
 {
     "name": "crtelt",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Utility to create DOM Element",
     "main": "dist/index.min.js",
     "module": "dist/index.esm.js",
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "rollup --config",
-        "postbuild": "cp ./src/types/index.d.ts ./dist",
         "prepublish": "npm run build"
     },
     "repository": {
@@ -30,6 +29,7 @@
         "@rollup/plugin-typescript": "^8.3.2",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "rollup": "^2.75.4",
+        "rollup-plugin-dts": "^4.2.2",
         "rollup-plugin-terser": "^7.0.2",
         "typescript": "^4.7.2"
     }

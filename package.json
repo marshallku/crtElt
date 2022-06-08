@@ -7,7 +7,6 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "rollup --config",
-        "prepublish": "npm run build",
         "test": "jest"
     },
     "repository": {

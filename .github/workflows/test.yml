@@ -2,7 +2,11 @@ name: Run test cases
 
 on:
     push:
-        tags-ignore:
+        branches:
+            - "**"
+        paths-ignore:
+            - ".github/ISSUE_TEMPLATE/**"
+            - ".github/PULL_REQUEST_TEMPLATE.md"
     pull_request:
 
 jobs:

@@ -45,7 +45,7 @@ export default function crtElt<
                     if (Array.isArray(args)) {
                         const curArgs = args as [
                             EventListenerOrEventListenerObject,
-                            boolean | AddEventListenerOptions | undefined
+                            boolean | AddEventListenerOptions
                         ];
 
                         node.addEventListener(type, ...curArgs);

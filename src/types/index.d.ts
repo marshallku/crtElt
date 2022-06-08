@@ -6,18 +6,22 @@ export interface CustomElements
 
 export type CustomElementKeys = keyof CustomElements;
 
+export type CustomEventMap = keyof HTMLElementEventMap;
+
 export type CreatedElement<T extends CustomElementKeys> = CustomElements[T];
 
 export type CustomElementEventListenerParameter<T extends CustomElementKeys> =
     Parameters<CreatedElement<T>["addEventListener"]>;
 
+type CustomListener<T extends CustomElementKeys, K extends CustomEventMap> = (
+    this: CreatedElement<T>,
+    ev: HTMLElementEventMap[K]
+) => any;
+
 export type CustomEvents<T extends CustomElementKeys> = {
-    [key in CustomElementEventListenerParameter<T>[0]]:
-        | CustomElementEventListenerParameter<T>[1]
-        | [
-              CustomElementEventListenerParameter<T>[1],
-              CustomElementEventListenerParameter<T>[2]
-          ];
+    [key in CustomEventMap]:
+        | CustomListener<T, key>
+        | [CustomListener<T, key>, boolean | EventListenerOptions];
 };
 
 export interface CustomAttributes<T extends CustomElementKeys> {

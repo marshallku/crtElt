@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules
 src
 *.local
+*.config.*
+tsconfig.json
+package-lock.json
 
 # Editor directories and files
 .vscode/*

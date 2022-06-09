@@ -40,6 +40,6 @@ declare function crtElt<
     U extends CreatedElement<T>
 >(
     nodeName: T,
-    attributes?: CustomElementAttributes<T>,
+    nullableAttributes?: CustomElementAttributes<T>,
     ...children: Array<string | DocumentFragment | Element | undefined | null>
 ): U;

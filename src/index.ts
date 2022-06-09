@@ -11,10 +11,11 @@ export default function crtElt<
     U extends CreatedElement<T>
 >(
     nodeName: T,
-    attributes: CustomElementAttributes<T> = {},
+    nullableAttributes: CustomElementAttributes<T> | null,
     ...children: Array<string | DocumentFragment | Element | undefined | null>
 ): U {
     const node = createElement(nodeName);
+    const attributes: CustomElementAttributes<T> = { ...nullableAttributes };
 
     children.forEach((childNode) => {
         if (!childNode) {

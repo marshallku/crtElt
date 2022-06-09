@@ -21,7 +21,7 @@ type CustomListener<T extends CustomElementKeys, K extends CustomEventMap> = (
 export type CustomEvents<T extends CustomElementKeys> = {
     [key in CustomEventMap]:
         | CustomListener<T, key>
-        | [CustomListener<T, key>, boolean | EventListenerOptions];
+        | [CustomListener<T, key>, boolean | AddEventListenerOptions];
 };
 
 export interface CustomAttributes<T extends CustomElementKeys> {

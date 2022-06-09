@@ -69,12 +69,38 @@ describe("Add event listener", () => {
                         return;
                     }
 
-                    target.innerHTML = "clicked";
+                    target.innerHTML += "clicked";
                 },
             },
         });
 
         expect(element.innerHTML).toBe("");
+        element.click();
+        expect(element.innerHTML).toBe("clicked");
+        element.click();
+        expect(element.innerHTML).toBe("clickedclicked");
+    });
+
+    it("Event listener options", () => {
+        const element = crtElt("button", {
+            type: "button",
+            events: {
+                click: [
+                    ({ target }) => {
+                        if (!(target instanceof HTMLButtonElement)) {
+                            return;
+                        }
+
+                        target.innerHTML += "clicked";
+                    },
+                    { once: true },
+                ],
+            },
+        });
+
+        expect(element.innerHTML).toBe("");
+        element.click();
+        expect(element.innerHTML).toBe("clicked");
         element.click();
         expect(element.innerHTML).toBe("clicked");
     });

@@ -2,6 +2,10 @@ import { screen } from "@testing-library/dom";
 import crtElt from "..";
 
 describe("Create Element", () => {
+    beforeEach(() => {
+        document.body.innerHTML = "";
+    });
+
     it("Create element", () => {
         const element = crtElt("div", { className: "foo bar" }, "Hello World!");
 
@@ -26,8 +30,27 @@ describe("Create Element", () => {
         document.body.append(element);
 
         expect(screen.getByTestId("svg")).toBeInTheDocument();
-        expect(element).toHaveClass("foo", "bar");
         expect(element.nodeName.toLocaleLowerCase()).toBe("svg");
+        expect(element).toHaveClass("foo", "bar");
+        expect(element).not.toHaveAttribute("className");
+    });
+
+    it("Create document fragment", () => {
+        const element = crtElt(
+            "fragment",
+            null,
+            crtElt(
+                "fragment",
+                null,
+                crtElt("div", { dataset: { testid: "div" } }, "Hello world!")
+            )
+        );
+
+        document.body.append(element);
+
+        expect(element.nodeName.toLocaleLowerCase()).toBe("#document-fragment");
+        expect(screen.getByTestId("div")).toBeInTheDocument();
+        expect(document.body.childNodes.length).toBe(1);
     });
 });
 
@@ -38,12 +61,14 @@ describe("Set attributes", () => {
                 display: "inline",
                 width: "20px",
                 height: "30px",
+                "--variable": "10px",
             },
         });
 
         expect(element).toHaveStyle("display: inline");
         expect(element).toHaveStyle("width: 20px");
         expect(element).toHaveStyle("height: 30px");
+        expect(element).toHaveStyle("--variable: 10px");
     });
 
     it("Dataset", () => {

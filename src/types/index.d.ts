@@ -34,12 +34,3 @@ export type CustomElementAttributes<T extends CustomElementKeys> =
     | Partial<CreatedElement<T>>
     | Partial<CustomAttributes<T>>
     | { [key: string]: string };
-
-declare function crtElt<
-    T extends CustomElementKeys,
-    U extends CreatedElement<T>
->(
-    nodeName: T,
-    nullableAttributes?: CustomElementAttributes<T>,
-    ...children: Array<string | DocumentFragment | Element | undefined | null>
-): U;

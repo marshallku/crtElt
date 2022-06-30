@@ -54,6 +54,13 @@ Object of dataset.
 Object of styles.\
 You can use CSS variables too.
 
+**class:**
+
+String of element's class names.\
+You can use both `className` and `class` to set class names.
+
+**And all the other attributes of the element**
+
 ### children:
 
 You can pass string, document fragment, element, undefined, null.\

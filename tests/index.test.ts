@@ -54,8 +54,8 @@ describe("Create Element", () => {
     });
 });
 
-describe("should set attributes", () => {
-    it("Styles", () => {
+describe("Setting attributes", () => {
+    it("should set styles", () => {
         const element = crtElt("div", {
             style: {
                 display: "inline",
@@ -84,8 +84,8 @@ describe("should set attributes", () => {
     });
 });
 
-describe("should add event listener", () => {
-    it("Click", () => {
+describe("Add event listener", () => {
+    it("should add click event listener", () => {
         const element = crtElt("button", {
             type: "button",
             events: {

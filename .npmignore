@@ -10,6 +10,7 @@ lerna-debug.log*
 .github
 node_modules
 src
+tests
 *.local
 *.config.*
 tsconfig.json

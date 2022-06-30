@@ -1,6 +1,6 @@
 {
-    "roots": ["<rootDir>/src/tests/"],
-    "setupFilesAfterEnv": ["<rootDir>/src/tests/setup.ts"],
+    "roots": ["<rootDir>/tests/"],
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.ts"],
     "testEnvironment": "jsdom",
     "transform": {
         "^.+\\.tsx?$": "ts-jest"

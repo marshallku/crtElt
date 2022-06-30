@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/dom";
-import crtElt from "..";
+import crtElt from "../src";
 
 describe("Create Element", () => {
     beforeEach(() => {

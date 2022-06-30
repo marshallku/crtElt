@@ -4,7 +4,7 @@ import {
     CustomElementKeys,
     CustomEvents,
 } from "./types";
-import createElement from "./createElement";
+import createElement from "./utils/createElement";
 
 export default function crtElt<
     T extends CustomElementKeys,

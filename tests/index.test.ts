@@ -6,7 +6,7 @@ describe("Create Element", () => {
         document.body.innerHTML = "";
     });
 
-    it("Create element", () => {
+    it("should create element", () => {
         const element = crtElt("div", { className: "foo bar" }, "Hello World!");
 
         expect(element.nodeName.toLocaleLowerCase()).toBe("div");
@@ -14,7 +14,7 @@ describe("Create Element", () => {
         expect(element.innerHTML).toBe("Hello World!");
     });
 
-    it("Create SVG element", () => {
+    it("should create SVG element", () => {
         const element = crtElt(
             "svg",
             {
@@ -35,7 +35,7 @@ describe("Create Element", () => {
         expect(element).not.toHaveAttribute("className");
     });
 
-    it("Create document fragment", () => {
+    it("should create document fragment", () => {
         const element = crtElt(
             "fragment",
             null,
@@ -54,7 +54,7 @@ describe("Create Element", () => {
     });
 });
 
-describe("Set attributes", () => {
+describe("should set attributes", () => {
     it("Styles", () => {
         const element = crtElt("div", {
             style: {
@@ -71,7 +71,7 @@ describe("Set attributes", () => {
         expect(element).toHaveStyle("--variable: 10px");
     });
 
-    it("Dataset", () => {
+    it("should set datasets", () => {
         const element = crtElt("div", {
             dataset: {
                 id: "foo",
@@ -84,7 +84,7 @@ describe("Set attributes", () => {
     });
 });
 
-describe("Add event listener", () => {
+describe("should add event listener", () => {
     it("Click", () => {
         const element = crtElt("button", {
             type: "button",
@@ -106,7 +106,7 @@ describe("Add event listener", () => {
         expect(element.innerHTML).toBe("clickedclicked");
     });
 
-    it("Event listener options", () => {
+    it("should add event listener with options", () => {
         const element = crtElt("button", {
             type: "button",
             events: {

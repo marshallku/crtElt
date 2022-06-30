@@ -82,6 +82,12 @@ describe("Setting attributes", () => {
         expect(element).toHaveAttribute("data-id", "foo");
         expect(element).toHaveAttribute("data-index-id", "1");
     });
+
+    it("should add classes with class attribute", () => {
+        const element = crtElt("div", { class: "foo bar" });
+
+        expect(element).toHaveClass("foo", "bar");
+    });
 });
 
 describe("Add event listener", () => {

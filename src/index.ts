@@ -86,6 +86,12 @@ export default function crtElt<
             return;
         }
 
+        if (key === "class") {
+            node.classList.add(...value.split(" "));
+
+            return;
+        }
+
         if (node instanceof SVGElement) {
             if (key === "className") {
                 node.classList.add(...value.split(" "));

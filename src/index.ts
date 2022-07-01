@@ -65,6 +65,10 @@ export default function crtElt<
 
         if (key === "dataset") {
             Object.entries(value).forEach(([dataAttribute, dataValue]) => {
+                if (!dataValue) {
+                    return;
+                }
+
                 node.dataset[dataAttribute] = dataValue as string;
             });
 

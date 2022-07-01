@@ -83,6 +83,16 @@ describe("Setting attributes", () => {
         expect(element).toHaveAttribute("data-index-id", "1");
     });
 
+    it("should not set falsy datasets", () => {
+        const element = crtElt("div", {
+            dataset: {
+                foo: undefined,
+            },
+        });
+
+        expect(element).not.toHaveAttribute("data-foo");
+    });
+
     it("should add classes with class attribute", () => {
         const element = crtElt("div", { class: "foo bar" });
 

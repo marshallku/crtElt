@@ -27,7 +27,7 @@ export type CustomEvents<T extends CustomElementKeys> = {
 export interface CustomAttributes<T extends CustomElementKeys> {
     class?: string;
     events: Partial<CustomEvents<T>>;
-    dataset: { [key: string]: string };
+    dataset: { [key: string]: string | undefined };
     style: Partial<CSSStyleDeclaration> | { [key: string]: string };
 }
 

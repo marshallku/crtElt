@@ -8,14 +8,14 @@ import createElement from "./utils/createElement";
 
 export default function crtElt<
     T extends CustomElementKeys,
-    U extends CreatedElement<T>
+    U = CreatedElement<T>
 >(
     nodeName: T,
     nullableAttributes: CustomElementAttributes<T> | null,
     ...children: Array<string | DocumentFragment | Element | undefined | null>
 ): U {
     const node = createElement(nodeName);
-    const attributes: CustomElementAttributes<T> = { ...nullableAttributes };
+    const attributes = { ...nullableAttributes };
 
     children.forEach((childNode) => {
         if (!childNode) {
@@ -90,13 +90,13 @@ export default function crtElt<
             return;
         }
 
-        if (key === "class") {
+        if (key === "class" && typeof value === "string") {
             node.classList.add(...value.split(" "));
 
             return;
         }
 
-        if (node instanceof SVGElement) {
+        if (node instanceof SVGElement && typeof value === "string") {
             if (key === "className") {
                 node.classList.add(...value.split(" "));
 
@@ -110,7 +110,7 @@ export default function crtElt<
 
         if (key in node) {
             try {
-                node[key as "innerText"] = value as string;
+                node[key as "id"] = value as string;
             } catch {
                 node.setAttribute(key, value as string);
             }

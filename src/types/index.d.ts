@@ -13,15 +13,15 @@ export type CreatedElement<T extends CustomElementKeys> = CustomElements[T];
 export type CustomElementEventListenerParameter<T extends CustomElementKeys> =
     Parameters<CreatedElement<T>["addEventListener"]>;
 
-type CustomListener<T extends CustomElementKeys, K extends CustomEventMap> = (
-    this: CreatedElement<T>,
-    ev: HTMLElementEventMap[K]
-) => any;
+export type CustomListener<
+    T extends CustomElementKeys,
+    K extends CustomEventMap
+> = (this: CreatedElement<T>, ev: HTMLElementEventMap[K]) => any;
 
 export type CustomEvents<T extends CustomElementKeys> = {
-    [key in CustomEventMap]:
-        | CustomListener<T, key>
-        | [CustomListener<T, key>, boolean | AddEventListenerOptions];
+    [K in CustomEventMap]:
+        | CustomListener<T, K>
+        | [CustomListener<T, K>, boolean | AddEventListenerOptions];
 };
 
 export interface CustomAttributes<T extends CustomElementKeys> {
@@ -31,7 +31,15 @@ export interface CustomAttributes<T extends CustomElementKeys> {
     style: Partial<CSSStyleDeclaration> | { [key: string]: string };
 }
 
-export type CustomElementAttributes<T extends CustomElementKeys> =
-    | Partial<CreatedElement<T>>
-    | Partial<CustomAttributes<T>>
-    | { [key: string]: string };
+export type CustomElementAttributes<
+    T extends CustomElementKeys,
+    E = CreatedElement<T>
+> = Partial<
+    Omit<
+        {
+            [K in keyof E]: E[K] | string;
+        },
+        "class" | "events" | "dataset" | "style"
+    >
+> &
+    Partial<CustomAttributes<T>>;

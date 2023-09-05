@@ -105,12 +105,9 @@ describe("Add event listener", () => {
         const element = crtElt("button", {
             type: "button",
             events: {
-                click({ target }) {
-                    if (!(target instanceof HTMLButtonElement)) {
-                        return;
-                    }
-
-                    target.innerHTML += "clicked";
+                click({ currentTarget }) {
+                    expect(currentTarget.tagName).toBe("BUTTON");
+                    currentTarget.innerHTML += "clicked";
                 },
             },
         });
@@ -127,12 +124,9 @@ describe("Add event listener", () => {
             type: "button",
             events: {
                 click: [
-                    ({ target }) => {
-                        if (!(target instanceof HTMLButtonElement)) {
-                            return;
-                        }
-
-                        target.innerHTML += "clicked";
+                    ({ currentTarget }) => {
+                        expect(currentTarget.tagName).toBe("BUTTON");
+                        currentTarget.innerHTML += "clicked";
                     },
                     { once: true },
                 ],
@@ -144,5 +138,34 @@ describe("Add event listener", () => {
         expect(element.innerHTML).toBe("clicked");
         element.click();
         expect(element.innerHTML).toBe("clicked");
+    });
+
+    it("should return proper target", () => {
+        let expectedTarget: string;
+        const child = crtElt("div", {}, crtElt("span", {}, "Hello World!"));
+        const element = crtElt(
+            "button",
+            {
+                type: "button",
+                events: {
+                    click({ currentTarget, target }) {
+                        expect(currentTarget.tagName).toBe("BUTTON");
+                        expect((target as HTMLElement).tagName).toBe(
+                            expectedTarget
+                        );
+                    },
+                },
+            },
+            child
+        );
+
+        const testElement = (element: HTMLElement) => {
+            expectedTarget = element.tagName;
+            element.click();
+        };
+
+        testElement(child);
+        testElement(element);
+        testElement(child.firstElementChild as HTMLSpanElement);
     });
 });

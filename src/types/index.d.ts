@@ -16,7 +16,12 @@ export type CustomElementEventListenerParameter<T extends CustomElementKeys> =
 export type CustomListener<
     T extends CustomElementKeys,
     K extends CustomEventMap
-> = (this: CreatedElement<T>, ev: HTMLElementEventMap[K]) => any;
+> = (
+    this: CreatedElement<T>,
+    ev: Omit<HTMLElementEventMap[K], "currentTarget"> & {
+        currentTarget: CreatedElement<T>;
+    }
+) => any;
 
 export type CustomEvents<T extends CustomElementKeys> = {
     [K in CustomEventMap]:

@@ -39,7 +39,7 @@ export type CustomElementAttributes<
         {
             [K in keyof E]: E[K] | string;
         },
-        "class" | "events" | "dataset" | "style"
-    >
-> &
-    Partial<CustomAttributes<T>>;
+        keyof CustomAttributes<T>
+    > &
+        CustomAttributes<T>
+>;

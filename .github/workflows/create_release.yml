@@ -70,6 +70,6 @@ jobs:
                       github.rest.actions.createWorkflowDispatch({
                         owner: context.repo.owner,
                         repo: context.repo.repo,
-                        workflow_id: 'npm-publish.yml',
+                        workflow_id: 'publish.yml',
                         ref: 'master',
                       })
